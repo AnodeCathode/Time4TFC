@@ -1,0 +1,14 @@
+[
+{
+  "modid": "Time4TFC",
+  "name": "Time4TFC",
+  "description": "Day Light Seasons for Terrafirmacraft",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "authors": [ "dmillerw", "AnodeCathode" ],
+  "dependencies": [
+     "mod_MinecraftForge"
+  ],
+  "credits": "dmillerw for his 1.7.10 mod TooMuchTime. All the TFC Devs"
+}
+]

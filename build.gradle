@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+// Go Forge go!
+apply plugin: "net.minecraftforge.gradle.forge"
+
+
+
+// Load properties file, easier to manage versions of required dependencies
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+if (System.getenv('VERSION') != null) {
+    version = System.getenv('VERSION')
+} else {
+    version = 'dev'
+}
+group = config.mod_group
+archivesBaseName = config.mod_archive_name
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft { // Only change any of this with prior approval from the dev team!
+    version = "${config.minecraft.version}-${config.forge.version}"
+    runDir = "run"
+    mappings = "stable_39"
+}
+repositories {
+    // Repositories required for dependencies, not ForgeGradle go here.
+
+  flatDir {
+        dirs "libs"
+    }
+}
+
+dependencies {
+    compile fileTree(include: ["*.jar"], dir: "libs")
+}
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+	
+	// from the project root, include the LICENSE file
+    from('.') {
+        include "LICENSE.txt"
+    }
+}
+
+project.tasks.withType(Jar) { jarTask -> // For all jar tasks
+    jarTask.appendix = "MC" + project.minecraft.version
+}
