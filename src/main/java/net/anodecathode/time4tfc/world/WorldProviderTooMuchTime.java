@@ -16,12 +16,12 @@ import static net.anodecathode.time4tfc.data.SessionData.*;
  */
 public class WorldProviderTooMuchTime extends WorldProvider
 {
-    public static final DimensionType TIME_DISPLACED = DimensionType.register("TimeDisplaced", "td", 0, WorldProviderTooMuchTime.class, false);
+    public static final DimensionType OVERWORLD = DimensionType.register("overworld", "", 0, WorldProviderTooMuchTime.class, true);
 
     public static void overrideDefault()
     {
         DimensionManager.unregisterDimension(0);
-        DimensionManager.registerDimension(0, TIME_DISPLACED);
+        DimensionManager.registerDimension(0, OVERWORLD);
 
     }
 
@@ -64,6 +64,6 @@ public class WorldProviderTooMuchTime extends WorldProvider
     @Override
     public DimensionType getDimensionType()
     {
-        return TIME_DISPLACED;
+        return OVERWORLD;
     }
 }
