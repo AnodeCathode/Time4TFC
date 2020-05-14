@@ -38,7 +38,7 @@ public class WorldProviderTooMuchTime extends WorldProvider
 
         if (SessionData.tfcSeasons)
         {
-            int month = CalendarTFC.CALENDAR_TIME.getMonthOfYear().ordinal() - 1;
+            int month = CalendarTFC.CALENDAR_TIME.getMonthOfYear().ordinal();
 
             SessionData.dayDuration = tfcDayLength[month];
             SessionData.nightDuration = 24000 - SessionData.dayDuration;
