@@ -35,6 +35,7 @@ minecraft { // Only change any of this with prior approval from the dev team!
     version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "run"
     mappings = "stable_39"
+    replace("@VERSION@", project.version)
 }
 repositories {
     // Repositories required for dependencies, not ForgeGradle go here.

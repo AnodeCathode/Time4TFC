@@ -14,7 +14,7 @@ import net.anodecathode.time4tfc.world.WorldProviderTooMuchTime;
 /**
  * @author AnodeCathode, dmillerw
  */
-@Mod(modid = "time4tfc", name = "Time4TFC", version = "%MOD_VERSION%", dependencies = "required-after:tfc")
+@Mod(modid = "time4tfc", name = "Time4TFC", version = "@VERSION@", dependencies = "required-after:tfc")
 public class time4tfc
 {
 
