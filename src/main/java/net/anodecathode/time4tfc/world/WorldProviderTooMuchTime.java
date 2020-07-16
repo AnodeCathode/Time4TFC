@@ -64,6 +64,6 @@ public class WorldProviderTooMuchTime extends WorldProvider
     @Override
     public DimensionType getDimensionType()
     {
-        return OVERWORLD;
+        return DimensionType.OVERWORLD;
     }
 }
